@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <title>Michaels guessing game</title>
+</head>
+<body class="name">
+        <h1 id="name-header"> The guessing Game is here</h1>
+        <div class="content-section" id="form-box" >
+            <form method="POST" action=''>
+                    <legend id="kind">Kindly input Your name</legend>
+                    <div>
+                        <input type="text" name="username" id="name-input" style="font-size: 40px;">
+                <div>
+                    <button>next</button>
+                </div>
+            </form>
+        </div>
+</body>
+</html>  

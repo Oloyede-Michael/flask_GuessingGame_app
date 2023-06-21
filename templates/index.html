@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Michaels Guessing Game</title>
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+    <body class="guess" style="font-size: 30px;">
+        <div id="main-container">
+            <h4> {{ session['name'] }} </h4>
+            <h4>Welcome to My Guessing Game!</h4>
+            <h6>I am thinking of a number between 1 to 20</h6>
+            <h5>Take a guess!</h5>
+            {% if status == 'low': %}
+                <div class="box no_win">Too Low!</div>
+            {% elif status == 'high': %}
+                <div class="box no_win">Too High!</div>
+            {% elif status == 'lose': %}
+                <div class="box no_win">
+                    <p>You Lose.You get 0 points</p>
+                    <button type="button" style="font-size: 15px;"><a href="/destroy_session">Try again?</a></button>
+                    <button type="button"style="font-size: 15px;"><a href="/End_game">End game!</a></button>
+                </div>
+            {% elif status == 'win': %}
+                <div class="box win">
+                    <p>
+                        {{ randNum }} was the number!
+                        <br>
+                        Guess Attempts: {{ guesses }}
+                        <br>
+                        Your Score is 50 points
+                    </p>
+                    <button type="button" style="font-size: 15px;"><a href="/destroy_session">Play again!</a></button>
+                    <button type="button" style="font-size: 15px;"><a href="/End_game">End game!</a></button>
+                </div>
+            {% endif %}
+            {% if status != 'win' and status != 'lose': %}
+            <form action='/guess' method='post'>
+                <input type="number" name="guess-value" min="1" max="100" style="font-size: 30px;">
+                <input type="submit" value="Submit" style="width: 20%;height: 50%;font-size: 20px;">
+            </form>
+            {% endif %}
+        </div>
+    </body>
+</html>
